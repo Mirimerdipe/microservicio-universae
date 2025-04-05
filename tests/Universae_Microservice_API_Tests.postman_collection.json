@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "6f525fe1-6ded-489e-9969-992ac3adb25f",
+		"name": "Universae_Microservice_API_Tests",
+		"description": "Microservicio Universae - Pruebas API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42892001"
+	},
+	"item": [
+		{
+			"name": "Test GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verify that the GET /saludo request returns status 200\r",
+							"// Verifico que la solicitud GET /saludo devuelve el estado 200\r",
+							"pm.test(\"GET /saludo devuelve 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/saludo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"saludo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test GET 404 Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verify that the GET /non-existing route returns status 404\r",
+							"// Verifico que la solicitud GET a una ruta inexistente devuelve el estado 404\r",
+							"pm.test(\"Ruta inexistente devuelve 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/ruta-inexistente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ruta-inexistente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test GET 500 Server Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verify that the GET /ruta-erronea request triggers a 500 Internal Server Error\r",
+							"// Verifico que la solicitud GET /ruta-erronea provoca un error interno 500\r",
+							"pm.test(\"Ruta que provoca error devuelve 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});\r",
+							"\r",
+							"// Verify that the response body contains the expected error message\r",
+							"//Verifico que el cuerpo de la respuesta contiene el mensaje de error esperado\r",
+							"pm.test(\"El cuerpo contiene el mensaje de error\", function () {\r",
+							"    const body = pm.response.text();\r",
+							"    pm.expect(body).to.include(\"Error interno\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/ruta-erronea",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ruta-erronea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verify that the response status code is 200\r",
+							"// Verifico que el código de estado de la respuesta es 200\r",
+							"pm.test(\"El código de estado es 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Verify that the HTML response contains the expected message\r",
+							"// Verifico que la respuesta HTML contiene el mensaje adecuado\r",
+							"pm.test(\"El HTML contiene el resultado\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Claramente, este trabajo merece un... Sobresaliente\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"num1\": 8,\r\n  \"num2\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sumar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sumar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test 400 Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verify that sending invalid data in POST /sumar returns status 400\r",
+							"// Verifico que enviar datos inválidos en POST /sumar devuelve el estado 400\r",
+							"pm.test(\"POST /sumar con datos incorrectos devuelve 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"// Verify that the HTML response contains the expected success message\r",
+							"// Verifico que la respuesta HTML contiene el mensaje de éxito esperado\r",
+							"pm.test(\"El cuerpo contiene el mensaje de error correcto\", function () {\r",
+							"    const body = pm.response.json();\r",
+							"    pm.expect(body.error).to.include(\"Los valores deben ser números\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"num1\": \"texto_invalido\",\r\n  \"num2\": 10\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sumar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sumar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

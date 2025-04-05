@@ -1,0 +1,10 @@
+# Docker Compose configuration file / Configuración de Docker Compose
+
+services:
+  # Microservice definition / Definición del microservicio
+  microservicio-universae:
+    build: .  # Build the image from the Dockerfile in the current directory / Construye la imagen desde el Dockerfile en el directorio actual
+    container_name: microservicio-universae-container  # Name for the container / Nombre para el contenedor
+    ports:
+      - "3000:3000"  # Map host port 3000 to container port 3000 / Mapea el puerto 3000 del host al puerto 3000 del contenedor
+

@@ -1,0 +1,38 @@
+# Kubernetes Deployment and Service for Microservicio Universae / Despliegue y Servicio de Kubernetes para Microservicio Universae
+
+# Fase 1: Deployment / Despliegue
+apiVersion: apps/v1  # API version for deployment / Versión de API para el despliegue
+kind: Deployment     # Resource type: Deployment / Tipo de recurso: Deployment
+metadata:
+  name: microservicio-universae-deployment  # Deployment name / Nombre del despliegue
+spec:
+  replicas: 1  # Number of desired pods / Número de pods deseados
+  selector:
+    matchLabels:
+      app: microservicio-universae  # Selector to match pods / Selector para identificar los pods
+  template:
+    metadata:
+      labels:
+        app: microservicio-universae  # Pod label / Etiqueta del pod
+    spec:
+      containers:
+      - name: microservicio-universae-container  # Container name / Nombre del contenedor
+        image: acrmicroserviciomiri2025.azurecr.io/microservicio-universae:v1  # Image from ACR / Imagen desde ACR
+        ports:
+        - containerPort: 3000  # Port the container exposes / Puerto que expone el contenedor
+
+# Fase 2: Service / Servicio
+
+---
+apiVersion: v1  # API version for service / Versión de API para el servicio
+kind: Service   # Resource type: Service / Tipo de recurso: Servicio
+metadata:
+  name: microservicio-universae-service  # Service name / Nombre del servicio
+spec:
+  type: LoadBalancer  # Expose service externally / Expone el servicio externamente
+  selector:
+    app: microservicio-universae  # Selector to match deployment pods / Selector para asociar a los pods del deployment
+  ports:
+  - protocol: TCP  # Communication protocol / Protocolo de comunicación
+    port: 80       # External port / Puerto externo
+    targetPort: 3000  # Internal container port / Puerto interno del contenedor
