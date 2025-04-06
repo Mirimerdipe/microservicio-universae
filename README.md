@@ -91,23 +91,25 @@ The cloud deployment lifecycle was completed, validating:
 ## 📚 Repositorio / Repository
 
 Este proyecto está disponible en:
+[👉 https://github.com/Mirimerdipe/microservicio-universae](https://github.com/Mirimerdipe/microservicio-universae)
 
 This project is available at:  
 [👉 https://github.com/Mirimerdipe/microservicio-universae](https://github.com/Mirimerdipe/microservicio-universae)
 
 ---
 
-> Proyecto desarrollado como parte del trabajo académico en UNIVERSAE.  
-> Project developed as part of an academic work at UNIVERSAE.
+> 🏫 Proyecto desarrollado como parte del trabajo académico en **UNIVERSAE**.  
+> 🏫 Project developed as part of an academic work at **UNIVERSAE**.
 
 ---
 
 ## 📝 Licencia / License
 
-Este proyecto está licenciado bajo la Licencia MIT.  
-This project is licensed under the MIT License.
+Este proyecto está licenciado bajo la **MIT License**.  
+This project is licensed under the **MIT License**.
 
----
+Consulta el archivo [LICENSE](LICENSE) para más detalles.  
+See the [LICENSE](LICENSE) file for details.
 
 
 
